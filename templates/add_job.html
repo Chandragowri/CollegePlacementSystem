@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Add Job{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-8">
+    <div class="form-card">
+      <h4 style="color:var(--primary-purple)">Post a Job / Internship</h4>
+      <form method="post" action="{{ url_for('add_job') }}">
+        <div class="mb-3">
+          <label class="form-label">Job ID</label>
+          <input name="job_Id" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Company</label>
+          <input name="company" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Position</label>
+          <input name="position" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Eligibility / Description</label>
+          <textarea name="eligibility" class="form-control" rows="4"></textarea>
+        </div>
+        <div class="d-grid">
+          <button class="btn btn-primary-custom">Publish Job</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

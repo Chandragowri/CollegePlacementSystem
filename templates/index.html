@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Home - Placement System{% endblock %}
+
+{% block content %}
+<div class="text-center mb-4">
+  <h1 style="color:var(--primary-purple); font-weight:700;">College Placement Portal</h1>
+  <p class="text-muted">Manage students, jobs, and applications.</p>
+</div>
+
+<div class="cards">
+  <div class="card-ui text-center">
+    <div class="img-wrap"><img src="https://img.icons8.com/fluency/96/data-configuration.png" alt=""></div>
+    <div class="card-title">Student Database</div>
+    <div class="card-text">View and manage student profiles and details.</div>
+    <a class="btn btn-primary-custom" href="{{ url_for('view_db') }}">Manage Students</a>
+  </div>
+
+  <div class="card-ui text-center">
+    <div class="img-wrap"><img src="https://img.icons8.com/color/96/mailbox.png" alt=""></div>
+    <div class="card-title">Post Job</div>
+    <div class="card-text">Add new job or internship openings for students.</div>
+    <a class="btn btn-primary-custom" href="{{ url_for('add_job') }}">Post Job</a>
+  </div>
+
+
+{% endblock %}

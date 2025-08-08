@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <div>
+    <h3 style="color:var(--primary-purple); margin:0">Welcome, {{ username }}</h3>
+    <p class="text-muted" style="margin:0">Overview of recent activity</p>
+  </div>
+  <div>
+    <a class="btn btn-primary-custom" href="{{ url_for('add_job') }}"><i class="fas fa-plus me-2"></i>New Job</a>
+  </div>
+</div>
+
+<!-- sample quick cards -->
+<div class="cards mb-4">
+  <div class="card-ui">
+    <div class="card-title">Total Students</div>
+    <div style="font-size:1.6rem; font-weight:700"> {{ stats.total_students or 0 }} </div>
+  </div>
+  <div class="card-ui">
+    <div class="card-title">Open Jobs</div>
+    <div style="font-size:1.6rem; font-weight:700"> {{ stats.open_jobs or 0 }} </div>
+  </div>
+  <div class="card-ui">
+    <div class="card-title">Applications</div>
+    <div style="font-size:1.6rem; font-weight:700"> {{ stats.total_applications or 0 }} </div>
+  </div>
+</div>
+
+<!-- Recent items table (example) -->
+<div class="table-custom">
+  <table class="table mb-0">
+    <thead>
+      <tr>
+        <th>Student</th>
+        <th>Drive</th>
+        <th>Status</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in recent %}
+      <tr>
+        <td>{{ row.student_name }}</td>
+        <td>{{ row.drive_title }}</td>
+        <td>{{ row.status }}</td>
+        <td>{{ row.date }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="4" class="text-center p-3">No recent activity</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

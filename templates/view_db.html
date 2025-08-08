@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Students{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h4 style="color:var(--primary-purple); margin:0">Student Database</h4>
+  <a class="btn btn-primary-custom" href="{{ url_for('add_student') }}">Add Student</a>
+</div>
+
+<div class="table-custom">
+  <table class="table mb-0">
+    <thead>
+      <tr>
+        <th>Reg No</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Dept</th>
+        <th>Year</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for s in students %}
+      <tr>
+        <td>{{ s.regNo }}</td>
+        <td>{{ s.firstName }} {{ s.lastName }}</td>
+        <td>{{ s.email }}</td>
+        <td>{{ s.branch or '-' }}</td>
+        <td>{{ s.semester or '-' }}</td>
+        <td>
+          <a class="btn btn-sm btn-outline-secondary" href="{{ url_for('edit_student', regno=s.regNo) }}">Edit</a>
+          <a class="btn btn-sm btn-outline-danger" href="{{ url_for('delete_student', regno=s.regNo) }}">Delete</a>
+        </td>
+      </tr>
+      {% else %}
+      <tr><td colspan="6" class="text-center p-3">No students found.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
